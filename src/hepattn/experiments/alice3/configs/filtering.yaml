@@ -16,7 +16,7 @@ data:
   particle_min_pt: 0.3                    # CHANGED: placeholder, to be agreed with Pierre/Panos
   particle_max_abs_eta: 4.0
   particle_min_num_hits: 3
-  event_max_num_particles: 6000           # CHANGED: you have ~3,600-5,200 per event
+  event_max_num_particles: 2500
   strict_max_objects: false
 
   inputs:
@@ -64,7 +64,6 @@ trainer:
         write_preds: true
         write_targets: true
         write_losses: false
-    - class_path: lightning.pytorch.callbacks.LearningRateMonitor
     - class_path: lightning.pytorch.callbacks.TQDMProgressBar
       init_args:
         refresh_rate: 100
