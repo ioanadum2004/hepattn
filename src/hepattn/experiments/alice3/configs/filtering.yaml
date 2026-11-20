@@ -1,9 +1,9 @@
 seed_everything: 42
 name: alice3-HF-test                      # CHANGED
 
-data:
+data:   # rn they re the exact same, need to split them
   train_dir: /data/alice/idumitra/alice3/parquet_test/    # CHANGED
-  val_dir:   /data/alice/idumitra/alice3/parquet_test/    # CHANGED (same events, smoke test only)
+  val_dir:   /data/alice/idumitra/alice3/parquet_test/    # CHANGED 
   test_dir:  /data/alice/idumitra/alice3/parquet_test/    # CHANGED
 
   num_workers: 4                          # CHANGED (only 10 events)
@@ -11,15 +11,15 @@ data:
   num_test: -1
   num_val: -1
 
-  hit_volume_ids: null                    # CHANGED: TrackML volume IDs (7, 8, 9) don't apply
+  hit_volume_ids: null                    # CHANGED
 
-  particle_min_pt: 0.3                    # CHANGED: placeholder, to be agreed with Pierre/Panos
+  particle_min_pt: 0.3                    # CHANGED: idk decide later what to put maybe change data.py to have a max value also
   particle_max_abs_eta: 4.0
   particle_min_num_hits: 3
   event_max_num_particles: 2500
   strict_max_objects: false
 
-  inputs:
+  inputs:                                 # decides what tensors the dataset hands over
     hit:                                  # CHANGED: only what your parquet has
       - x
       - y
@@ -35,8 +35,8 @@ data:
       - pt
 
 trainer:
-  max_epochs: 5                           # CHANGED: smoke test
-  accelerator: gpu                        # set to cpu if you have no GPU
+  max_epochs: 5                           # CHANGED
+  accelerator: gpu                        # see how to change to cpu
   devices: 1
   precision: 16-mixed
   log_every_n_steps: 1                    # CHANGED
@@ -44,7 +44,7 @@ trainer:
   gradient_clip_val: 0.1
   enable_progress_bar: True
 
-  logger:                                 # CHANGED: Comet needs an API key
+  logger:                                 # CHANGED: to the csv idk what commet is
     class_path: lightning.pytorch.loggers.CSVLogger
     init_args:
       save_dir: logs
@@ -89,7 +89,7 @@ model:
             - class_path: hepattn.models.InputNet
               init_args:
                 input_name: hit
-                fields:                   # CHANGED
+                fields:                   # CHANGED: decide what the network actually get
                   - x
                   - y
                   - z
