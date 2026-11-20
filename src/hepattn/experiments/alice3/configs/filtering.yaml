@@ -2,9 +2,9 @@ seed_everything: 42
 name: alice3-HF-test                      # CHANGED
 
 data:   # rn they re the exact same, need to split them
-  train_dir: /data/alice/idumitra/alice3/parquet_test/    # CHANGED
-  val_dir:   /data/alice/idumitra/alice3/parquet_test/    # CHANGED 
-  test_dir:  /data/alice/idumitra/alice3/parquet_test/    # CHANGED
+  train_dir: /data/alice/idumitra/alice3/parquet_test/train/    # CHANGED
+  val_dir:   /data/alice/idumitra/alice3/parquet_test/val/    # CHANGED 
+  test_dir:  /data/alice/idumitra/alice3/parquet_test/test/    # CHANGED
 
   num_workers: 4                          # CHANGED (only 10 events)
   num_train: -1
@@ -12,6 +12,7 @@ data:   # rn they re the exact same, need to split them
   num_val: -1
 
   hit_volume_ids: null                    # CHANGED
+  hit_coord_scale: 0.001
   hit_coord_scale: 0.001                  # x and y reach about ±925 and z about ±3400, so they’re in mm, so scaled w this they become m to be o(1)
 
   particle_min_pt: 0.3                    # CHANGED: idk decide later what to put maybe change data.py to have a max value also
