@@ -12,6 +12,7 @@ data:   # rn they re the exact same, need to split them
   num_val: -1
 
   hit_volume_ids: null                    # CHANGED
+  hit_coord_scale: 0.001                  # x and y reach about ±925 and z about ±3400, so they’re in mm, so scaled w this they become m to be o(1)
 
   particle_min_pt: 0.3                    # CHANGED: idk decide later what to put maybe change data.py to have a max value also
   particle_max_abs_eta: 4.0
